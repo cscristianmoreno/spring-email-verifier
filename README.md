@@ -115,4 +115,6 @@ CREATE TRIGGER onTriggerSaveToken
 AFTER INSERT ON postgres.email_token
 FOR EACH ROW
 EXECUTE FUNCTION postgres.fnAuditory();
+
 ```
+<img src="assets/auditory.png"/>
