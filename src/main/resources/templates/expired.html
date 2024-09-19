@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Código Expirado</title>
+    <script>
+        window.addEventListener("load", () => {
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            console.log(event.target);
+
+            const form = new FormData(event.target);
+            const data = Object.fromEntries(form.entries());
+
+            fetch("/new-code", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+        });
+    });
+    </script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-width: 600px;
+        }
+        h1 {
+            color: #f44336;
+        }
+        p {
+            font-size: 16px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #f44336;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #d32f2f;
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        .input-group input[type="email"] {
+            font-size: 16px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        .input-group button {
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #f44336;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .input-group button:hover {
+            background-color: #d32f2f;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Código Expirado!</h1>
+        <p>El código de verificación que has ingresado ha expirado. Por favor, ingresa tu correo electrónico y solicita un nuevo código.</p>
+        <form action="/new-code" method="post">
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Introduce tu correo electrónico" required />
+            </div>
+            <div class="input-group">
+                <button type="submit">Generar Nuevo Código</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333333;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #009688;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2, h3, h4 {
+            color: #009688;
+            font-size: 22px;
+            margin-top: 0;
+        }
+        .content p {
+            line-height: 1.6;
+            margin: 0 0 15px;
+        }
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            margin: 20px 0;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #00796b;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .button:hover {
+            background-color: #004d40;
+        }
+        .footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #666666;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .footer a {
+            color: #009688;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Registro exitoso</h1>
+        </div>
+        <div class="content">
+            <h2>Verifica tu dirección de correo electrónico</h2>
+            <p th:text="@{'Hola ' + ${user.username}} + ','"></p>
+            <p>Gracias por registrarte en nuestro sistema. Para completar el proceso de registro, por favor, verifica tu dirección de correo electrónico haciendo clic en el botón a continuación:</p>
+            
+            <a th:href="@{${redirectUri}(token=${token})}" class="button">Verificar mi correo</a>
+            <p>Si el botón anterior no funciona, puedes copiar y pegar el siguiente enlace en tu navegador:</p>
+            <p><a href="[URL de verificación]">[URL de verificación]</a></p>
+            <p>Si tienes alguna pregunta o necesitas asistencia, no dudes en contactarnos.</p>
+            <p>Atentamente,<br>El equipo de [Nombre de la Empresa]</p>
+        </div>
+        <div class="footer">
+            <p>&copy; [Año] Nombre de la Empresa. Todos los derechos reservados.</p>
+            <p><a>Visita nuestro sitio web</a></p>
+        </div>
+    </div>
+</body>
+</html>
